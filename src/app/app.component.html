@@ -1,2 +1,8 @@
-<div id="map" #map>
+<div class="grid grid-cols-4 h-screen">
+  <div class="bg-pink-700 text-white h-full z-10 p-4">
+    {{ (list$ | async)?.agentInfo?.firstname }}
+    {{ (list$ | async)?.agentInfo?.lastname }} |
+    {{ (list$ | async)?.agentInfo?.company }}
+  </div>
+  <div class="col-span-3 h-full" id="map" #map></div>
 </div>

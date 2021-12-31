@@ -16,8 +16,7 @@ import { ItemListComponent } from './components/item-list/item-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
-    
+    HttpClientModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
