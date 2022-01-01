@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { ItemComponent } from './components/item/item.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { MapComponent } from './components/map/map.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { metaReducers, reducers } from './store';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,9 @@ import { MapComponent } from './components/map/map.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule    
+    HttpClientModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

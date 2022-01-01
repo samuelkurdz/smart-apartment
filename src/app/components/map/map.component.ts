@@ -64,8 +64,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
           new mapboxgl.Marker(el)
             .setLngLat([record.geocode.Longitude, record.geocode.Latitude])
             .addTo(this.map);
-
-            console.log(this.MapContainer.nativeElement)
         }
 
         const averageLong = totalLongitude / res.records.length;
