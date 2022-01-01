@@ -19,14 +19,15 @@ import { storeFreeze } from 'ngrx-store-freeze';
  * notation packages up all of the exports into a single object.
  */
 
-import * as fromLayout from './reducers/layout.reducer';
+import { propertiesReducer } from './reducers/properties.reducer';
+import { ListResponse } from '../core/interface';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
-export interface State {
-  layout: fromLayout.State;
+export interface AppState {
+  properties: ListResponse
 }
 
 /**
@@ -34,12 +35,12 @@ export interface State {
  * These reducer functions are called with each dispatched action
  * and the current or initial state and return a new immutable state.
  */
-export const reducers: ActionReducerMap<State> = {
-  layout: fromLayout.reducer,
+export const reducers: ActionReducerMap<AppState> = {
+  properties: propertiesReducer
 };
 
 // console.log all actions
-export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
+export function logger(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   return (state, action) => {
     const result = reducer(state, action);
     console.groupCollapsed(action.type);
@@ -57,6 +58,6 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
  * the root meta-reducer. To add more meta-reducers, provide an array of meta-reducers
  * that will be composed to form the root meta-reducer.
  */
-export const metaReducers: MetaReducer<State>[] = !environment.production
+export const metaReducers: MetaReducer<AppState>[] = !environment.production
   ? [logger, storeFreeze]
   : [];

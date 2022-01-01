@@ -1,3 +1,3 @@
-import * as LayoutActions from './layout.actions';
+import * as PropertiesActions from './properties.actions';
 
-export { LayoutActions };
+export { PropertiesActions };

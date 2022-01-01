@@ -1,5 +1,5 @@
 export interface ListResponse {
-  agentInfo: AgentInfo;
+  agentInfo?: AgentInfo;
   body: string;
   records: Record[];
   role: string;

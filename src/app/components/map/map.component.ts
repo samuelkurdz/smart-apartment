@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
 // import * as mapboxgl from 'mapbox-gl';
-import { MapboxOptions, Map } from 'mapbox-gl';
+import { Map } from 'mapbox-gl';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ListResponse } from 'src/app/core/interface';
-import { ListingsService } from 'src/app/core/list-service.service';
+import { selectRecords } from 'src/app/store/selectors/properties.selector';
 
 declare var mapboxgl: any;
 
@@ -18,10 +19,11 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   map: Map | undefined;
   list$: Observable<ListResponse>;
+  records$ = this.store.select(selectRecords)
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
-    private listingSerivce: ListingsService
+    private readonly store: Store,
   ) { }
 
   ngOnInit(): void {
@@ -40,22 +42,23 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   processMapData() {
     let totalLongitude: number = 0;
     let totalLatitude: number = 0;
-    this.list$ = this.listingSerivce.fetchMapPinItems(5638557, 'A0E2523B25B805CBB6F8EC9D98AF56457EE7A255');
-    this.list$
+    this.records$
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res) => {
-
-        for (const [index, record] of res.records.entries()) {
+      .subscribe((records) => {
+        for (const [index, record] of records?.entries()) {
           totalLatitude += Number(record.geocode.Latitude);
           totalLongitude += Number(record.geocode.Longitude);
 
           const el = document.createElement('div');
-          const width = 36;
-          const height = 36;
           el.classList.add('marker');
-          el.style.width = `${width}px`;
-          el.style.height = `${height}px`;
+          el.style.width = `36px`;
           el.style.color = 'blueviolet';
+
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+          el.style.alignItems = 'center';
+          el.style.justifyContent = 'center';
+
 
           this.createRecordKey(el, index);
           this.createLocationIcon(el);
@@ -66,8 +69,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
             .addTo(this.map);
         }
 
-        const averageLong = totalLongitude / res.records.length;
-        const averageLat = totalLatitude / res.records.length;
+        const averageLong = totalLongitude / records.length;
+        const averageLat = totalLatitude / records.length;
         this.map?.setCenter([averageLong, averageLat]);
         this.map?.setZoom(13);
       })
@@ -76,12 +79,17 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   createRecordKey(node: Node, index: number) {
     const span = document.createElement('span');
     span.textContent = String(index + 1);
-    span.style.width = `20px`;
-    span.style.height = `20px`;
+    span.style.width = `16px`;
+    span.style.height = `16px`;
     span.style.color = 'white';
-    span.style.background = 'green';
-    span.style.padding = '10px';
+    span.style.border = '#831843 solid 1px';
+    span.style.background = '#ec4899';
+    span.style.padding = '8px';
     span.style.borderRadius = '100%';
+    span.style.display = 'flex';
+    span.style.flexDirection = 'column';
+    span.style.alignItems = 'center';
+    span.style.justifyContent = 'center';
     node.appendChild(span);
   }
 
@@ -93,7 +101,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     );
 
     iconSvg.setAttribute('fill', 'currentColor');
-    iconSvg.setAttribute('viewBox', '0 0 24 24');
+    iconSvg.setAttribute('viewBox', '0 0 20 20');
     iconSvg.setAttribute('stroke', 'black');
 
     iconPath.setAttribute(
