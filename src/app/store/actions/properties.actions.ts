@@ -1,9 +1,9 @@
 import { createAction, props, union } from '@ngrx/store';
-import { ListResponse } from 'src/app/core/interface';
+import { PropertiesList } from 'src/app/core/interface';
 
 export const setProperties = createAction(
     '[Properties] set properies data',
-    props<{response: ListResponse}>()
+    props<{response: PropertiesList}>()
   );
 
 const all = union({ setProperties });

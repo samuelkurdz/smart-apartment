@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ListResponse } from 'src/app/core/interface';
+import { PropertiesList } from 'src/app/core/interface';
 
-export const selectProperties = createFeatureSelector<ListResponse>('properties');
+export const selectProperties = createFeatureSelector<PropertiesList>('properties');
 
 export const selectRecords = createSelector(
   selectProperties,

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Map } from 'mapbox-gl';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ListResponse } from 'src/app/core/interface';
+import { PropertiesList } from 'src/app/core/interface';
 import { selectRecords } from 'src/app/store/selectors/properties.selector';
 
 declare var mapboxgl: any;
@@ -18,7 +18,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('map') MapContainer!: ElementRef<HTMLElement>;
 
   map: Map | undefined;
-  list$: Observable<ListResponse>;
+  list$: Observable<PropertiesList>;
   records$ = this.store.select(selectRecords);
   destroy$: Subject<boolean> = new Subject<boolean>();
 

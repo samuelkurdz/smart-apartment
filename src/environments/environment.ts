@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'https://app.smartapartmentdata.com/List/json/',
+  listItemsEndpoint: 'listItems.aspx',
+  updateListItemEndpoint: 'updateListItem.aspx',
+  propertyItemEndpoint: 'propertyItem.aspx',
 };
 
 /*

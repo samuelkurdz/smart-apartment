@@ -1,9 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { ListResponse } from 'src/app/core/interface';
+import { PropertiesList } from 'src/app/core/interface';
 import { PropertiesActions } from '../actions';
 
 
-const initialState: ListResponse = {
+const initialState: PropertiesList = {
   body: "",
   agentInfo: undefined,
   role: "",
@@ -15,5 +15,5 @@ const initialState: ListResponse = {
 
 export const propertiesReducer = createReducer(
   initialState,
-  on(PropertiesActions.setProperties, (state, { response }): ListResponse => ({ ...state, ...response })),
+  on(PropertiesActions.setProperties, (state, { response }): PropertiesList => ({ ...state, ...response })),
 );
