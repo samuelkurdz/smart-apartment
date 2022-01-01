@@ -1,8 +1,32 @@
-<div class="bg-pink-500 text-white p-3">
-  firstname lastname | company
+<div class="bg-pink-500 text-white p-3 font-semibold">
+  {{(agentInfo$|async)?.firstname}}
+  {{(agentInfo$|async)?.lastname}} | 
+  {{(agentInfo$|async)?.company}}
 </div>
 
 <div class="bg-pink-300 text-white p-3">
   <p>Filter Values</p>
 </div>
-{{items?.length}}
+
+<div class="p-3 space-y-3 bg-gray-100 h-full overflow-y-scroll">
+  <ng-container *ngFor="let record of records$|async; let recordIndex = index">
+    <div class="p-3 shadow-md bg-white rounded-md cursor-pointer" [routerLink]="'/' + record.propertyID">
+      <div class="flex justify-between">
+        <div class="w-72">
+          <h3 class="font-medium text-xl flex gap-3 items-center">
+            <span class="bg-pink-500 p-2 rounded-full text-white px-1.5 flex items-center justify-center">{{recordIndex + 1}}</span>
+            {{record.name}}
+            <svg *ngIf="record.favorite" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-pink-600" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+            </svg>
+          </h3>
+          <p class="text-sm text-gray-600">{{record.streetAddress}}, {{record.city}} {{record.state}}</p>
+
+          <p class="mt-4">{{record.pets ? 'Pets are allowed' : 'Pets not allowed'}}</p>
+          <p>{{record.highValueAmenities.length}} High value amenities</p>
+        </div>
+        <img class="w-40 h-32 object-contain" [src]="record.photo" alt="photo">
+      </div>
+    </div>
+  </ng-container>
+</div>

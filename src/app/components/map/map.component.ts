@@ -19,7 +19,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   map: Map | undefined;
   list$: Observable<ListResponse>;
-  records$ = this.store.select(selectRecords)
+  records$ = this.store.select(selectRecords);
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(

@@ -15,12 +15,12 @@ export interface Record {
   highValueAmenities: string[];
   highestSentCommissions: number;
   listID: number;
-  management: null
+  management: string
   name: string;
-  onsiteManager: null
+  onsiteManager: string;
   order: number;
   paidUtilities: string[];
-  pets: true
+  pets: boolean;
   photo: string;
   propertyID: number;
   proximity: number;

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Record } from 'src/app/core/interface';
+import { Store } from '@ngrx/store';
+import { selectAgentInfo, selectRecords } from 'src/app/store/selectors/properties.selector';
 
 @Component({
   selector: 'app-item-list',
@@ -8,8 +9,11 @@ import { Record } from 'src/app/core/interface';
 })
 export class ItemListComponent  {
 
-  @Input() items: Record[] | undefined;
-  constructor() { }
+  agentInfo$ = this.store.select(selectAgentInfo);
+  records$ = this.store.select(selectRecords);
+  constructor(
+    private readonly store: Store,
+  ) { }
 
   
 

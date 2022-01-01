@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        'map-container': '400px 1fr',
+        'map-container': '450px 1fr',
       }
     },
   },
