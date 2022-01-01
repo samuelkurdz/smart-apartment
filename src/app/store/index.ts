@@ -1,7 +1,5 @@
 import {
   ActionReducerMap,
-  createSelector,
-  createFeatureSelector,
   ActionReducer,
   MetaReducer,
 } from '@ngrx/store';
@@ -62,16 +60,3 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
 export const metaReducers: MetaReducer<State>[] = !environment.production
   ? [logger, storeFreeze]
   : [];
-
-/**
- * Layout Reducers
- * selectors
- */
-// export const getLayoutState = createFeatureSelector<State, fromLayout.State>(
-//   'layout'
-// );
-
-// export const getShowSidenav = createSelector(
-//   getLayoutState,
-//   fromLayout.getShowSidenav
-// );
