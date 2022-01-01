@@ -1,8 +1,8 @@
-<div class="grid grid-cols-4 h-screen">
-  <div class="bg-pink-700 text-white h-full z-10 p-4">
-    {{ (list$ | async)?.agentInfo?.firstname }}
-    {{ (list$ | async)?.agentInfo?.lastname }} |
-    {{ (list$ | async)?.agentInfo?.company }}
+<div class="grid grid-cols-map-container h-screen">
+  <div class="bg-white h-full z-10">
+    <router-outlet></router-outlet>
   </div>
-  <div class="col-span-3 h-full" id="map" #map></div>
+  <div class="h-full">
+    <app-map></app-map>
+  </div>
 </div>

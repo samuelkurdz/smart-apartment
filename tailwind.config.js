@@ -4,7 +4,11 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'map-container': '400px 1fr',
+      }
+    },
   },
   variants: {
     extend: {},

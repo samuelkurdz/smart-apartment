@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { shareReplay  } from "rxjs/operators";
-import { ListResponse, UpdateItemData, UpdateResponse } from './core/interface';
+import { ListResponse, UpdateItemData, UpdateResponse } from './interface';
 
 @Injectable({
   providedIn: 'root'
