@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private listingSerivce: ListingsService,
-    private store: Store
+    private store: Store,
   ) { }
 
   ngOnInit(): void {

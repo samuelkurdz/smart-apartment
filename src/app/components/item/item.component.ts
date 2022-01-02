@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PropertyDetail } from 'src/app/core/interface';
@@ -9,8 +9,7 @@ import { ListingsService } from 'src/app/core/list-service.service';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit, AfterViewInit {
-  @ViewChild('map') MapContainer!: ElementRef<HTMLElement>;
+export class ItemComponent implements OnInit {
   propertyId: number;
   property$: Observable<PropertyDetail>;
 
@@ -26,9 +25,5 @@ export class ItemComponent implements OnInit, AfterViewInit {
 
   getSelectedProperty(id: number) {
     this.property$ = this.listingSerivce.fetchProperty(5363950, '5AE7DFB40500DDC03BC84BD3F0A8AC0F18784B1E', id);
-  }
-
-  ngAfterViewInit(): void {
-    console.log(this.MapContainer);
   }
 }

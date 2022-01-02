@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PropertiesList, PropertyDetail, UpdateItemData, UpdateResponse } from './interface';
 import { environment } from 'src/environments/environment';
+import { shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class ListingsService {
     return this.httpClient.get<PropertyDetail>(
       environment.baseUrl + environment.propertyItemEndpoint,
       { params }
-    );
+    ).pipe(shareReplay());
   }
 
   updateItem(payload: UpdateItemData) {
