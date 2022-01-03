@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-skeleton',
@@ -7,18 +6,5 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
   styleUrls: ['./skeleton.component.scss']
 })
 export class SkeletonComponent {
-
-  // // paramsArray: string[] = [];
-  // constructor(
-  //   private router: Router
-  // ) { }
-
-  // ngOnInit(): void {
-  //   this.router.events.subscribe(val=> {
-  //     if (val instanceof NavigationEnd) {
-  //       this.paramsArray = val.url.split('/').filter(element => element);
-  //     }
-  //   });
-  // }
 
 }

@@ -7,7 +7,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Record } from 'src/app/core/interface';
 import { NodeCreatorService } from 'src/app/core/node-creator.service';
-import { toggleLoader } from 'src/app/store/actions/loader.actions';
 import { selectRecords } from 'src/app/store/selectors/properties.selector';
 
 declare var mapboxgl: any;
@@ -91,11 +90,13 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       el.style.flexDirection = 'column';
       el.style.alignItems = 'center';
       el.style.justifyContent = 'center';
+      // el.style.cursor = 'move'
   
       this.nodeCreator.createLocationIcon(el);
   
 
-      const marker = new mapboxgl.Marker(el)
+      // const marker = new mapboxgl.Marker({element: el, draggable: true})
+      const marker = new mapboxgl.Marker({element: el})
         .setLngLat([property.geocode.Longitude, property.geocode.Latitude])
         .addTo(this.map)
       this.markers.push(marker);
