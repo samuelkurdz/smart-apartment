@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,13 +11,23 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { metaReducers, reducers } from './store';
+import { SkeletonComponent } from './components/skeleton/skeleton.component';
+import { LoaderInterceptor } from './core/interceptor.service';
 
+export const InterceptorProviders = [
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoaderInterceptor,
+    multi: true,
+  },
+];
 @NgModule({
   declarations: [
     AppComponent,
     ItemComponent,
     ItemListComponent,
-    MapComponent
+    MapComponent,
+    SkeletonComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +36,7 @@ import { metaReducers, reducers } from './store';
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
-  providers: [],
+  providers: [InterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

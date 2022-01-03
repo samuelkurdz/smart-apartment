@@ -1,5 +1,6 @@
 <div class="grid grid-cols-map-container h-screen">
   <div class="bg-white h-full z-10">
+    <app-skeleton *ngIf="isLoading$|async"></app-skeleton>
     <router-outlet></router-outlet>
   </div>
   <div class="h-full">

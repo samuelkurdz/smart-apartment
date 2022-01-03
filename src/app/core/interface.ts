@@ -1,3 +1,6 @@
+export interface LoaderState {
+  isLoading: boolean;
+}
 export interface PropertiesList {
   agentInfo?: AgentInfo;
   body: string;

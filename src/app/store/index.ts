@@ -20,14 +20,16 @@ import { storeFreeze } from 'ngrx-store-freeze';
  */
 
 import { propertiesReducer } from './reducers/properties.reducer';
-import { PropertiesList } from '../core/interface';
+import { LoaderState, PropertiesList } from '../core/interface';
+import { loaderReducer } from './reducers/loader.reducer';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface AppState {
-  properties: PropertiesList
+  properties: PropertiesList,
+  loader: LoaderState
 }
 
 /**
@@ -36,7 +38,8 @@ export interface AppState {
  * and the current or initial state and return a new immutable state.
  */
 export const reducers: ActionReducerMap<AppState> = {
-  properties: propertiesReducer
+  properties: propertiesReducer,
+  loader: loaderReducer
 };
 
 // console.log all actions
