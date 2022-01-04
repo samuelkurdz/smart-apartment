@@ -46,8 +46,20 @@ export interface AgentInfo {
 
 export interface FloorPlan {
   bedrooms: number;
-  price: number;
-  type: string;
+  type?: string;
+  available?: string;
+  bath?: number;
+  bed?: number;
+  comments?: string;
+  den?: false
+  deposit?: number;
+  floorplanID?: number;
+  isAvailable?: boolean;
+  photoUrl?: string;
+  price?: number;
+  priceMax?: number;
+  sqft?: number;
+  washerDryer?: string;
 }
 
 export interface Geocode {
