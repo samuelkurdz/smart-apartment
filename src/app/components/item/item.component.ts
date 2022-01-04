@@ -11,6 +11,8 @@ import { ListingsService } from 'src/app/core/list-service.service';
 })
 export class ItemComponent implements OnInit {
   propertyId: number;
+  listID: any;
+  token: any;
   property$: Observable<PropertyDetail>;
 
   constructor(
@@ -19,6 +21,8 @@ export class ItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listID = this.route.parent?.snapshot.params['listID'];
+    this.token = this.route.parent?.snapshot.params['token'];
     this.propertyId = this.route.snapshot.params['propertyId'];
     this.getSelectedProperty(this.propertyId);
   }

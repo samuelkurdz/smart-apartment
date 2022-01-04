@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { metaReducers, reducers } from './store';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { LoaderInterceptor } from './core/interceptor.service';
+import { WrapperComponent } from './components/wrapper/wrapper.component';
 
 export const InterceptorProviders = [
   {
@@ -27,7 +28,8 @@ export const InterceptorProviders = [
     ItemComponent,
     ItemListComponent,
     MapComponent,
-    SkeletonComponent
+    SkeletonComponent,
+    WrapperComponent
   ],
   imports: [
     BrowserModule,

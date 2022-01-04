@@ -3,7 +3,7 @@ import { LoaderState } from 'src/app/core/interface';
 import { LoaderActions } from '../actions'
 
 const initialState: LoaderState = {
-  isLoading: false,
+  isLoading: true,
 };
 
 export const loaderReducer = createReducer(

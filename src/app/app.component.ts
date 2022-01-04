@@ -20,10 +20,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(toggleLoader({newState: true}));
-    this.listingSerivce.fetchMapPinItems(5363950, '5AE7DFB40500DDC03BC84BD3F0A8AC0F18784B1E').subscribe(res => {
-      this.store.dispatch(setProperties({ response: res}));
-    })
+    // this.store.dispatch(toggleLoader({newState: true}));
   }
 
 }

@@ -43,7 +43,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   processRouteInformation(routeParam: string) {
     const paramsArray = routeParam.split('/').filter(element => element);
-    paramsArray.length ? this.processMapData(paramsArray[0]) : this.processMapData();
+    paramsArray.length > 2 ? this.processMapData(paramsArray[2]) : this.processMapData();
   }
 
   ngAfterViewInit(): void {
@@ -68,6 +68,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.records$
     .pipe(takeUntil(this.destroy$))
     .subscribe((records) => {
+      this.removeMarkersFromMap();
         if (propertyid) {
           this.displaySinglePropertyOnMap(records, propertyid);
         } else {
@@ -80,7 +81,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
     const property = records.find(record => record.propertyID === Number(propertyID));
 
     if (property) {
-      this.removeMarkersFromMap();
       const el = document.createElement('div');
       el.classList.add('marker');
       el.style.width = `36px`;
@@ -106,7 +106,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   displayPropertiesOntoMap(records: Record[]) {
-    this.removeMarkersFromMap();
+    // this.removeMarkersFromMap();
     let totalLongitude: number = 0;
     let totalLatitude: number = 0;
     for (const [index, record] of records?.entries()) {
