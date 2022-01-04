@@ -1,4 +1,4 @@
-<ng-container *ngIf="property$ | async as property">
+<div class="flex flex-col h-screen" *ngIf="property$ | async as property">
   <div
     class="bg-pink-500 text-white p-3 font-semibold cursor-pointer flex gap-2 items-center"
     routerLink="/"
@@ -45,35 +45,49 @@
     <img *ngFor="let item of property.photos" [src]="item" alt="photos" class="w-56">
   </div>
 
-  <div class="px-2.5" *ngIf="property.floorplans.length">
-    <h3 class="font-semibold text-2xl text-black">Plans</h3>
-    <div class="grid grid-cols-1 divide-y">
-      <div class="flex justify-between py-1.5 font-bold text-base">
-        <h3>Bed & Bath</h3>
-        <h3>Size</h3>
-        <h3>Price</h3>
-      </div>
-      <div class="flex justify-between py-1.5" *ngFor="let plan of property.floorplans">
-        <div>
-          <p><span class="font-semibold">Bed</span>: {{plan.bed ?? 0}} {{plan.bed && plan.bed > 1 ? 'beds' : 'bed'}}</p>
-          <p><span class="font-semibold">Bath</span>: {{plan.bath ?? 0}} {{plan.bath && plan.bath > 1 ? 'baths' : 'bath'}}</p>
+  <section class="h-full overflow-y-scroll px-3.5">
+
+    <div class="" *ngIf="property.floorplans.length">
+      <h3 class="font-semibold text-2xl text-black">Plans</h3>
+      <div class="grid grid-cols-1 divide-y">
+        <div class="flex justify-between py-1.5 font-bold text-base">
+          <h3>Bed & Bath</h3>
+          <h3>Size</h3>
+          <h3>Price</h3>
         </div>
-        
-        <p>{{plan.sqft ?? 0}} sqft</p>
-  
-        <h3>{{plan.price | currency}}</h3>
+        <div class="flex justify-between py-1.5" *ngFor="let plan of property.floorplans">
+          <div>
+            <p><span class="font-semibold">Bed</span>: {{plan.bed ?? 0}} {{plan.bed && plan.bed > 1 ? 'beds' : 'bed'}}</p>
+            <p><span class="font-semibold">Bath</span>: {{plan.bath ?? 0}} {{plan.bath && plan.bath > 1 ? 'baths' : 'bath'}}</p>
+          </div>
+          
+          <p>{{plan.sqft ?? 0}} sqft</p>
+    
+          <h3>{{plan.price | currency}}</h3>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="px-2.5 my-3" *ngIf="property.highValueAmenities.length">
-    <h3 class="font-semibold text-2xl text-black mb-2.5">High Value Amenities</h3>
-    <div class="grid grid-cols-2 gap-3">
-      <div *ngFor="let amenity of property.highValueAmenities" class="flex gap-2">
-        <img [src]="'https://cdn.smartlocating.com/images/svg/32/' + amenity.split('/').join('') + '.svg'" alt="" class="w-7 h-7">
-        <p>{{amenity}}</p>
+    
+      <div class="my-3" *ngIf="property.highValueAmenities.length">
+        <h3 class="font-semibold text-2xl text-black mb-2.5">High Value Amenities</h3>
+        <div class="grid grid-cols-2 gap-3">
+          <div *ngFor="let amenity of property.highValueAmenities" class="flex gap-2">
+            <img [src]="'https://cdn.smartlocating.com/images/svg/32/' + amenity.split('/').join('') + '.svg'" alt="" class="w-7 h-7">
+            <p>{{amenity}}</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    
+      <div class="my-3" *ngIf="property.propertyAmenities.length">
+        <h3 class="font-semibold text-2xl text-black mb-2.5">Community Features</h3>
+        <div class="grid grid-cols-2 gap-3">
+          <div *ngFor="let amenity of property.propertyAmenities" class="flex gap-2">
+            <img [src]="'https://cdn.smartlocating.com/images/svg/32/' + amenity.split('/').join('') + '.svg'" alt="" class="w-7 h-7">
+            <p>{{amenity}}</p>
+          </div>
+        </div>
+      </div>
 
-</ng-container>
+  </section>
+
+</div>
