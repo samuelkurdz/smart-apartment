@@ -30,4 +30,5 @@ export class ItemComponent implements OnInit {
   getSelectedProperty(id: number) {
     this.property$ = this.listingSerivce.fetchProperty(this.listID, this.token, id);
   }
+
 }

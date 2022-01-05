@@ -38,8 +38,8 @@ export class ListingsService {
     ).pipe(shareReplay());
   }
 
-  updateItem(payload: UpdateItemData) {
-    return this.httpClient.post<UpdateResponse>(
+  updateItemFavoriteStatus(payload: UpdateItemData) {
+    return this.httpClient.post(
       environment.baseUrl + environment.updateListItemEndpoint, payload
     );
   }
