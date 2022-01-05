@@ -1,5 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ListingsService } from 'src/app/core/list-service.service';
@@ -16,12 +16,14 @@ export class WrapperComponent implements OnInit {
     private readonly store: Store,
     private route: ActivatedRoute,
     private listingSerivce: ListingsService,
+    private title: Title
   ) { }
 
   ngOnInit(): void {
     const { listID, token } = this.route.snapshot.params;
     this.listingSerivce.fetchMapPinItems(listID, token).subscribe(res => {
       this.store.dispatch(setProperties({ response: res}));
+      this.title.setTitle(res.agentInfo?.company ?? 'Smart Apartments');
     })
   }
 

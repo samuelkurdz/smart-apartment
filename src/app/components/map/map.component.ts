@@ -90,12 +90,10 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       el.style.flexDirection = 'column';
       el.style.alignItems = 'center';
       el.style.justifyContent = 'center';
-      // el.style.cursor = 'move'
   
       this.nodeCreator.createLocationIcon(el);
   
 
-      // const marker = new mapboxgl.Marker({element: el, draggable: true})
       const marker = new mapboxgl.Marker({element: el})
         .setLngLat([property.geocode.Longitude, property.geocode.Latitude])
         .addTo(this.map)
@@ -106,7 +104,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   displayPropertiesOntoMap(records: Record[]) {
-    // this.removeMarkersFromMap();
     let totalLongitude: number = 0;
     let totalLatitude: number = 0;
     for (const [index, record] of records?.entries()) {

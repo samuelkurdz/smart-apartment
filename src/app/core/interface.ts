@@ -1,3 +1,8 @@
+export interface CompanyInfo {
+  listID?: number;
+  token?: string;
+}
+
 export interface LoaderState {
   isLoading: boolean;
 }
