@@ -47,7 +47,7 @@
 
   <section class="h-full overflow-y-scroll px-3.5">
 
-    <div class="" *ngIf="property.floorplans.length">
+    <div class="" *ngIf="property.floorplans?.length">
       <h3 class="font-semibold text-2xl text-black">Plans</h3>
       <div class="grid grid-cols-1 divide-y">
         <div class="flex justify-between py-1.5 font-bold text-base">
@@ -68,7 +68,7 @@
       </div>
     </div>
     
-      <div class="my-3" *ngIf="property.highValueAmenities.length">
+      <div class="my-3" *ngIf="property.highValueAmenities?.length">
         <h3 class="font-semibold text-2xl text-black mb-2.5">High Value Amenities</h3>
         <div class="grid grid-cols-2 gap-3">
           <div *ngFor="let amenity of property.highValueAmenities" class="flex gap-2">
@@ -78,7 +78,7 @@
         </div>
       </div>
     
-      <div class="my-3" *ngIf="property.propertyAmenities.length">
+      <div class="my-3" *ngIf="property.propertyAmenities?.length">
         <h3 class="font-semibold text-2xl text-black mb-2.5">Community Features</h3>
         <div class="grid grid-cols-2 gap-3">
           <div *ngFor="let amenity of property.propertyAmenities" class="flex gap-2">

@@ -137,7 +137,7 @@ export interface PropertyDetail {
   city: string;
   email: string;
   favorite: boolean;
-  floorplans: FloorPlan[];
+  floorplans?: FloorPlan[];
   geocode: Geocode;
   highValueAmenities: string[];
   listID: number;
@@ -149,7 +149,7 @@ export interface PropertyDetail {
   numUnits: number;
   officeHours: string;
   onsiteManager: string;
-  paidUtilities: string[];
+  paidUtilities?: string[];
   parking: Parking;
   petInfo: PetInfo;
   phone: string;
@@ -166,7 +166,7 @@ export interface PropertyDetail {
   specials: any;
   streetAddress: string;
   studentHousting: boolean;
-  unitAmenities: string[];
+  unitAmenities?: string[];
   url: string;
   yearBuilt: number;
   yearRenovated: number;

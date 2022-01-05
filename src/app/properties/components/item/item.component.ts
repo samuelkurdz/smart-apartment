@@ -28,6 +28,6 @@ export class ItemComponent implements OnInit {
   }
 
   getSelectedProperty(id: number) {
-    this.property$ = this.listingSerivce.fetchProperty(5363950, '5AE7DFB40500DDC03BC84BD3F0A8AC0F18784B1E', id);
+    this.property$ = this.listingSerivce.fetchProperty(this.listID, this.token, id);
   }
 }
