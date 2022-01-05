@@ -22,7 +22,7 @@
             <p class="mt-4">{{record.pets ? 'Pets are allowed' : 'Pets not allowed'}}</p>
             <p>{{record.highValueAmenities.length}} High value amenities</p>
           </div>
-          <img class="w-40 h-32 object-contain" [src]="record.photo" alt="photo">
+          <img class="w-40 h-32 object-contain" loading="lazy" [src]="record.photo" alt="photo">
         </div>
       </div>
     </ng-container>

@@ -56,7 +56,7 @@
   </div>
 
   <div class="flex overflow-x-scroll gap-1.5 p-2" *ngIf="property.photos?.length">
-    <img *ngFor="let item of property.photos" [src]="item" alt="photos" class="w-56">
+    <img *ngFor="let item of property.photos" loading="lazy" [src]="item" alt="photos" class="w-56">
   </div>
 
   <section class="h-full overflow-y-scroll px-3.5">
