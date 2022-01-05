@@ -61,6 +61,35 @@
 
   <section class="h-full overflow-y-scroll px-3.5">
 
+    <div *ngIf="property.onsiteManager" class="flex gap-3 items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+      </svg>
+      <p class="text-lg font-semibold">{{property.onsiteManager}}</p>
+    </div>
+    <div *ngIf="property.management" class="mt-3">
+      <h3 class="text-lg font-semibold mb-2.5 flex gap-3 items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+          <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+        </svg>
+        {{property.management}}
+      </h3>
+
+
+      <!-- <h5 class="text-base font-bold">Offices</h5> -->
+      <div class="flex gap-3 items-center pl-10">
+        <ng-container *ngFor="let office of property.managementOffices">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-blue-400" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+          </svg>
+          <a class="text-blue-400" target="_blank" [href]="'http://maps.google.com/?daddr=' + office.streetAddress + ',' + office.city + ' ' + office.state">
+            <p>{{office.streetAddress}} {{office.city}}, {{office.state}}</p>
+          </a>
+        </ng-container>
+      </div>
+    </div>
+
     <div class="" *ngIf="property.floorplans?.length">
       <h3 class="font-semibold text-2xl text-black">Plans</h3>
       <div class="grid grid-cols-1 divide-y">
